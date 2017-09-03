@@ -10,8 +10,8 @@ public class Student implements Serializable {
     private String lastName;
     private String patronymicName;
     private LocalDate birthDate;
-    private String groupName;
-    private String departmentName;
+    private Group group;
+    private Department department;
 
     public String getFirstName() {
         return firstName;
@@ -45,32 +45,20 @@ public class Student implements Serializable {
         this.birthDate = birthDate;
     }
 
-    public String getGroupName() {
-        return groupName;
+    public Group getGroup() {
+        return group;
     }
 
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
-    public String getDepartmentName() {
-        return departmentName;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", patronymicName='" + patronymicName + '\'' +
-                ", birthDate=" + birthDate +
-                ", groupName='" + groupName + '\'' +
-                ", departmentName='" + departmentName + '\'' +
-                '}';
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     @Override
@@ -85,8 +73,8 @@ public class Student implements Serializable {
         if (patronymicName != null ? !patronymicName.equals(student.patronymicName) : student.patronymicName != null)
             return false;
         if (birthDate != null ? !birthDate.equals(student.birthDate) : student.birthDate != null) return false;
-        if (groupName != null ? !groupName.equals(student.groupName) : student.groupName != null) return false;
-        return departmentName != null ? departmentName.equals(student.departmentName) : student.departmentName == null;
+        if (group != null ? !group.equals(student.group) : student.group != null) return false;
+        return department != null ? department.equals(student.department) : student.department == null;
     }
 
     @Override
@@ -95,8 +83,20 @@ public class Student implements Serializable {
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (patronymicName != null ? patronymicName.hashCode() : 0);
         result = 31 * result + (birthDate != null ? birthDate.hashCode() : 0);
-        result = 31 * result + (groupName != null ? groupName.hashCode() : 0);
-        result = 31 * result + (departmentName != null ? departmentName.hashCode() : 0);
+        result = 31 * result + (group != null ? group.hashCode() : 0);
+        result = 31 * result + (department != null ? department.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", patronymicName='" + patronymicName + '\'' +
+                ", birthDate=" + birthDate +
+                ", group=" + group +
+                ", department=" + department +
+                '}';
     }
 }
